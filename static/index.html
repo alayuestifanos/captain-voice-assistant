@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Captain Voice Assistant</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>&#9875; Captain Voice Assistant</h1>
+    <p class="subtitle">RAG-grounded answers from the ship's operations manual, translated and spoken in the Captain's voice.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <label for="query">Captain's command / question</label>
+      <textarea id="query" rows="3" placeholder="e.g. What is the procedure if a crew member falls overboard?"></textarea>
+
+      <div class="controls">
+        <label for="lang">Target language</label>
+        <select id="lang"></select>
+        <button id="askBtn">Ask</button>
+      </div>
+    </section>
+
+    <section id="result" class="panel hidden">
+      <div id="warnings" class="warnings hidden"></div>
+
+      <h2>Answer</h2>
+      <p id="answerEn" class="answer"></p>
+      <p id="citations" class="citations"></p>
+
+      <h2 id="translatedHeading">Translated</h2>
+      <p id="answerTranslated" class="answer"></p>
+
+      <div id="audioBlock" class="hidden">
+        <h2>Audio (Captain's voice)</h2>
+        <audio id="audioPlayer" controls></audio>
+        <p class="meta" id="ttsMeta"></p>
+      </div>
+
+      <details>
+        <summary>Retrieved context (RAG)</summary>
+        <div id="chunks"></div>
+      </details>
+
+      <details>
+        <summary>Pipeline trace ID</summary>
+        <p id="traceId" class="meta"></p>
+      </details>
+    </section>
+
+    <p id="statusLine" class="status"></p>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
