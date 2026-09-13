@@ -1,0 +1,23 @@
+# Environment
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+
+# Generated / runtime artifacts (rebuildable, not part of the deliverable)
+data/index/
+audio_output/*.mp3
+audio_output/*.wav
+logs/*.jsonl
+logs/traces/
+pip_install.log
+
+# Keep placeholder directories
+!audio_output/.gitkeep
+!logs/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,21 @@
+# Core pipeline
+anthropic==1.4.0            # LLM: optional pluggable alternative to Groq (see app/llm/providers.py)
+                             # Groq (default, free tier) needs no extra package -- plain REST via `requests` below
+faiss-cpu==1.15.0           # vector store for RAG retrieval
+sentence-transformers==6.0.1  # local embedding model (pulls in torch/transformers)
+
+# API / web
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+python-multipart==0.0.32
+pydantic==2.13.5
+
+# TTS (local fallback; ElevenLabs/Azure are plain HTTP via `requests`)
+pyttsx3==2.99
+
+# Utilities
+python-dotenv==1.2.3
+requests==2.34.2
+
+# Tests
+pytest==9.1.1
