@@ -23,13 +23,6 @@ except ImportError:  # pragma: no cover - dotenv is a thin convenience only
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-def _bool(name: str, default: bool) -> bool:
-    val = os.getenv(name)
-    if val is None:
-        return default
-    return val.strip().lower() in {"1", "true", "yes", "on"}
-
-
 @dataclass
 class Settings:
     # --- Paths -----------------------------------------------------------
@@ -90,11 +83,6 @@ class Settings:
     azure_speech_region: str = field(default_factory=lambda: os.getenv("AZURE_SPEECH_REGION", ""))
     local_voice_name: str = field(default_factory=lambda: os.getenv("LOCAL_VOICE_NAME", ""))
     local_voice_rate: int = field(default_factory=lambda: int(os.getenv("LOCAL_VOICE_RATE", "170")))
-
-    # --- Server --------------------------------------------------------------
-    host: str = field(default_factory=lambda: os.getenv("HOST", "0.0.0.0"))
-    port: int = field(default_factory=lambda: int(os.getenv("PORT", "8000")))
-    debug: bool = field(default_factory=lambda: _bool("DEBUG", False))
 
     def ensure_dirs(self) -> None:
         for d in (self.index_dir, self.audio_output_dir, self.logs_dir):
